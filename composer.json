@@ -1,0 +1,62 @@
+{
+  "name": "jop-software/typo3-loki",
+  "type": "typo3-cms-extension",
+  "description": "Grafana Loki integration for TYPO3",
+  "keywords": [
+    "TYPO3",
+    "TYPO3 CMS",
+    "Loki",
+    "Grafana",
+    "Grafana Loki",
+    "Monitoring",
+    "Logging",
+    "Log aggregation"
+  ],
+  "homepage": "https://jop-software.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Johannes Przymusinski",
+      "email": "johannes.przymusinski@jop-software.de",
+      "homepage": "https://jop-software.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "typo3/cms-core": "^11.5"
+  },
+  "require-dev": {
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan": "^1.0",
+    "saschaegerer/phpstan-typo3": "^1.0",
+    "squizlabs/php_codesniffer": "^3.6",
+    "typo3/minimal": "^v11.5.0"
+  },
+  "config": {
+    "bin-dir": ".build/bin",
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "vendor-dir": ".build/vendor",
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "app-dir": ".build",
+      "extension-key": "typo3-loki",
+      "web-dir": ".build/public"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Jops\\TYPO3\\Loki\\": "Classes"
+    }
+  },
+  "prefer-stable": true,
+  "scripts": {
+  }
+}
