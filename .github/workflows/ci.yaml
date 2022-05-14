@@ -1,0 +1,40 @@
+name: 'CI Pipeline'
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  static-code-analyses:
+    name: 'Static code analyses'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php-version:
+          - 7.4
+          - 8.0
+          - 8.1
+
+    steps:
+      - uses: 'actions/checkout@v3'
+
+      - name: 'Setup PHP'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: 'composer:v2'
+
+      - name: 'Cache composer dependencies'
+        uses: 'actions/cache@v3'
+        with:
+          key: "php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}"
+          path: ~/.cache/composer
+
+      - name: 'Install composer dependencies'
+        run: 'composer install --no-progress --no-interaction'
+
+      - name: 'Run PHP_CodeSniffer'
+        run: '.build/bin/phpcs'
