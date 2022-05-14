@@ -21,14 +21,7 @@ class JsonWriter extends FileWriter
             $data = $context;
         }
 
-        $message = json_encode([
-            "date" => date('r', (int)$record->getCreated()),
-            "severity" => strtoupper($record->getLevel()),
-            "requestId" => $record->getRequestId(),
-            "component" => $record->getComponent(),
-            "message" => $this->interpolate($message, $context),
-            "data" => $data,
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $message = json_encode($record->toArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 
         if (false === fwrite(self::$logFileHandles[$this->logFile], $message . LF)) {
