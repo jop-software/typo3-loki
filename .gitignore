@@ -11,3 +11,7 @@
 /composer.lock
 /vendor
 ### <jop-software/composer
+
+### >jop-software/ci-tooling
+.phpcs-cache
+### <jop-software/ci-tooling
