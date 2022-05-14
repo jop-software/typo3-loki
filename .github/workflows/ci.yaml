@@ -38,3 +38,6 @@ jobs:
 
       - name: 'Run PHP_CodeSniffer'
         run: '.build/bin/phpcs'
+
+      - name: 'Run phpstan'
+        run: '.build/bin/phpstan'

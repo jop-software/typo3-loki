@@ -1,0 +1,8 @@
+parameters:
+    level: 9
+    tmpDir: .build/var/cache/phpstan
+    paths:
+        - Classes
+    excludePaths:
+        - Tests/*
+        - .build/*
