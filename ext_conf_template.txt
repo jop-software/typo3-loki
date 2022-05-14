@@ -1,0 +1,10 @@
+# cat=Loki; type=string; label=Loki base URL
+base-url =
+
+basic-auth {
+    # cat=Authentication; type=string; label=BasicAuth username
+    username =
+
+    # cat=Authentication; type=string; label=BasicAuth password
+    password =
+}
