@@ -17,9 +17,23 @@ Professional support is available, please contact [info@jop-software.de](mailto:
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'] = [
     // configuration for ERROR level log entries
-    \TYPO3\CMS\Core\Log\LogLevel::ERROR => [
-        // add a FileWriter
-        \Jops\TYPO3\Loki\Log\Writers\JsonWriter::class => []
+    \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
+        // Configure LokiWrite to send logs to Loki
+        \Jops\TYPO3\Loki\Log\Writers\LokiWriter::class => [
+            "streams" => [
+                "key" => "value",
+            ],
+        ],
+    ]
+];
+```
+
+```php
+$GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'] = [
+    // configuration for ERROR level log entries
+    \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
+        // Convert all logs to JSON to scrape them with loki clients like Promtail
+        \Jops\TYPO3\Loki\Log\Writers\JsonWriter::class => [],
     ]
 ];
 ```
