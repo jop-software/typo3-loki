@@ -19,7 +19,7 @@ class LokiWriter extends AbstractWriter
      *
      * @var array<string, string>
      */
-    protected array $streams;
+    protected array $labels;
 
     /**
      * @param array<string, string> $options
@@ -46,7 +46,7 @@ class LokiWriter extends AbstractWriter
             "streams" => [
                 [
                     // Those are the labels we can query after
-                    "stream" => $this->streams,
+                    "stream" => $this->labels,
                     // This is "unix epoch in nano seconds" and the log line string
                     "values" => [
                         [ $this->unixEpochNanoSeconds(), json_encode($record->toArray())],
@@ -81,11 +81,11 @@ class LokiWriter extends AbstractWriter
     }
 
     /**
-     * @param array<string, string> $streams
+     * @param array<string, string> $labels
      */
-    public function setStreams(array $streams): void
+    public function setLabels(array $labels): void
     {
-        $this->streams = $streams;
+        $this->labels = $labels;
     }
 
     /**

@@ -20,7 +20,7 @@ $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'] = [
     \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
         // Configure LokiWrite to send logs to Loki
         \Jops\TYPO3\Loki\Log\Writers\LokiWriter::class => [
-            "streams" => [
+            "labels" => [
                 "key" => "value",
             ],
         ],
