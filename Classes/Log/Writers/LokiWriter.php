@@ -49,7 +49,7 @@ class LokiWriter extends AbstractWriter
                     "stream" => $this->streams,
                     // This is "unix epoch in nano seconds" and the log line string
                     "values" => [
-                        [ time() * 1000000000, json_encode($record->toArray())],
+                        [ $this->unixEpochNanoSeconds(), json_encode($record->toArray())],
                     ],
                 ],
             ],
@@ -86,5 +86,16 @@ class LokiWriter extends AbstractWriter
     public function setStreams(array $streams): void
     {
         $this->streams = $streams;
+    }
+
+    /**
+     * Return the current unix epoch in nanoseconds.
+     * This makes use of the <code>time()</code> so, even tho the result is in "nanoseconds", the precision is only
+     * one second.
+     */
+    protected function unixEpochNanoSeconds(): string
+    {
+        $epoch = time() * 1000000000;
+        return "{$epoch}";
     }
 }
