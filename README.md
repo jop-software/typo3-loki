@@ -20,7 +20,7 @@ $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'] = [
     \TYPO3\CMS\Core\Log\LogLevel::ERROR => [
         // Convert all logs to JSON to scrape them with loki clients like Promtail
         \Jops\TYPO3\Loki\Log\Writers\JsonWriter::class => [],
-    ]
+    ],
 ];
 ```
 
@@ -39,7 +39,7 @@ $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'] = [
                 "key" => "value",
             ],
         ],
-    ]
+    ],
 ];
 ```
 
@@ -54,12 +54,12 @@ This could be an example configuration:
 
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['loki'] = [
-    "base-url" => "https://loki.example.com"
-    // Optional: Add basic-auth credentials if needed-
+    "base-url" => "https://loki.example.com",
+    // Optional: Add basic-auth credentials if needed
     "basic-auth" => [
         "username" => "username",
-        "password" => "secure-password"
-    ]
+        "password" => "secure-password",
+    ],
 ];
 ```
 
