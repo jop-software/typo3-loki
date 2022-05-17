@@ -1,0 +1,24 @@
+name: 'Release to TER'
+
+on:
+  push:
+    tags:
+      - "**"
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  ci:
+    uses: 'jop-software/typo3-loki/.github/workflows/ci.yaml@{{ env.BRANCH_NAME }}'
+
+  ter-upload:
+    runs-on: ubuntu-latest
+    needs:
+      - ci
+    steps:
+      - uses: 'actions/checkout@v1'
+      - uses: 'tomasnorre/typo3-upload-ter@v2'
+        name: 'Publish 🚀'
+        with:
+          api-token: ${{ secrets.TER_ACCESS_KEY }}

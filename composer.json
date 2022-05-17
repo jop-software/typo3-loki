@@ -59,5 +59,13 @@
   },
   "prefer-stable": true,
   "scripts": {
+    "prepare-release": [
+      "rm -rf .ddev",
+      "rm -rf .github",
+      "rm phpcs.xml",
+      "rm phpstan.neon",
+      "rm composer.lock",
+      "rm .gitignore"
+    ]
   }
 }
