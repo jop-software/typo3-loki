@@ -3,11 +3,11 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Grafana Loki integration for TYPO3',
     'description' => 'Transport or prepare TYPO3 log messages for Loki.',
-    'category' => 'plugin',
+    'category' => 'misc',
     'author' => 'Johannes Przymusinski',
     'author_email' => 'johannes.przymusinski@jop-software.de',
     'author_company' => 'jop-software Inh. Johannes Przymusinski',
-    'state' => 'misc',
+    'state' => 'stable',
     'clearCacheOnLoad' => 0,
     'version' => '1.0.1',
     'constraints' => [
