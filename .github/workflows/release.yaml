@@ -5,12 +5,9 @@ on:
     tags:
       - "**"
 
-env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-
 jobs:
   ci:
-    uses: 'jop-software/typo3-loki/.github/workflows/ci.yaml@{{ env.BRANCH_NAME }}'
+    uses: 'jop-software/typo3-loki/.github/workflows/ci.yaml@main'
 
   ter-upload:
     runs-on: ubuntu-latest
