@@ -42,3 +42,6 @@ jobs:
 
       - name: 'Run phpstan'
         run: '.build/bin/phpstan'
+
+      - name: 'Run rector'
+        run: '.build/bin/rector process --dry-run'
