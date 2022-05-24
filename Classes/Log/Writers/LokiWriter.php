@@ -2,6 +2,7 @@
 
 namespace Jops\TYPO3\Loki\Log\Writers;
 
+use RuntimeException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\Exception\InvalidLogWriterConfigurationException;
@@ -35,11 +36,11 @@ class LokiWriter extends AbstractWriter
 
     public function writeLog(LogRecord $record): self
     {
-        /** @var string $baseUrl */
+        /** @var ?string $baseUrl */
         $baseUrl = $this->extensionConfiguration->get("loki", "base-url");
 
         if (!$baseUrl) {
-            throw new \RuntimeException("No base url for loki found.");
+            throw new RuntimeException("No base url for loki found.");
         }
 
         $body = json_encode([
