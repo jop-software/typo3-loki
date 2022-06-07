@@ -12,15 +12,22 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class LokiWriter extends AbstractWriter
 {
-    protected ExtensionConfiguration $extensionConfiguration;
-    protected RequestFactory $requestFactory;
+    /**
+     * @var ExtensionConfiguration
+     */
+    protected $extensionConfiguration;
+
+    /**
+     * @var RequestFactory
+     */
+    protected $requestFactory;
 
     /**
      * LogQL streams we attach to the log sent to loki.
      *
      * @var array<string, string>
      */
-    protected array $labels;
+    protected $labels;
 
     /**
      * @param array<string, string> $options
