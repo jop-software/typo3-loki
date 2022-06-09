@@ -9,7 +9,7 @@ use TYPO3\CMS\Core\Log\Writer\FileWriter;
 
 class JsonWriter extends FileWriter
 {
-    public function writeLog(LogRecord $record)
+    public function writeLog(LogRecord $record): self
     {
         $message = json_encode($record->toArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
