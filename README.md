@@ -62,6 +62,11 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['loki'] = [
     ],
 ];
 ```
+## Supported TYPO3 Versions
+The extension is only officially available and released for TYPO3 11.
+
+If you need it in an older project, you can find a version that is compatible with TYPO3 9 and 10 in the [`typo3-9-10-compatability`](https://github.com/jop-software/typo3-loki/tree/typo3-9-10-compatability) branch.
+Use `dev-typo3-9-10-compatability` as the version in composer.
 
 ## Local Development
 We use [DDEV](https://ddev.com) for local development.
