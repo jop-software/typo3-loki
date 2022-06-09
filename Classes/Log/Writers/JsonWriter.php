@@ -11,20 +11,7 @@ class JsonWriter extends FileWriter
 {
     public function writeLog(LogRecord $record)
     {
-        $data = '';
-        $context = $record->getData();
-        $message = $record->getMessage();
-        if (!empty($context)) {
-            // Fold an exception into the message, and string-ify it into context so it can be jsonified.
-            if (isset($context['exception']) && $context['exception'] instanceof Throwable) {
-                $message .= $this->formatException($context['exception']);
-                $context['exception'] = (string)$context['exception'];
-            }
-            $data = $context;
-        }
-
         $message = json_encode($record->toArray(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
 
         if (false === fwrite(self::$logFileHandles[$this->logFile], $message . LF)) {
             throw new RuntimeException('Could not write log record to log file', 1345036335);
