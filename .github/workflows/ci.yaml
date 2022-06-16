@@ -9,7 +9,7 @@ on:
 jobs:
   static-code-analyses:
     name: 'Static code analyses'
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-22.04'
 
     strategy:
       fail-fast: true

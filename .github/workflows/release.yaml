@@ -7,13 +7,13 @@ on:
 
 jobs:
   ci:
-    uses: 'jop-software/typo3-loki/.github/workflows/ci.yaml@main'
+    uses: './.github/workflows/ci.yaml'
 
   ter-upload:
     name: 'Release 🚀'
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-22.04'
     needs:
-      - ci
+      - 'ci'
     steps:
       - uses: 'actions/checkout@v1'
       - uses: 'tomasnorre/typo3-upload-ter@v2'
