@@ -9,12 +9,12 @@ use Rector\PostRector\Rector\NameImportingPostRector;
 use Rector\Set\ValueObject\SetList;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
 use Ssch\TYPO3Rector\FileProcessor\Composer\Rector\ExtensionComposerRector;
-use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\FileIncludeToImportStatementTypoScriptRector;
+use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\v10\v0\ExtbasePersistenceTypoScriptRector;
+use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\v9\v0\FileIncludeToImportStatementTypoScriptRector;
 use Ssch\TYPO3Rector\Rector\v9\v0\InjectAnnotationRector;
 use Ssch\TYPO3Rector\Rector\General\ConvertImplicitVariablesToExplicitGlobalsRector;
 use Ssch\TYPO3Rector\Rector\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
-use Ssch\TYPO3Rector\FileProcessor\TypoScript\Rector\ExtbasePersistenceTypoScriptRector;
 use Rector\Config\RectorConfig;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -38,13 +38,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     $parameters = $rectorConfig->parameters();
 
-    // this prevents infinite loop issues due to symlinks in e.g. ".Build/" folders within single extensions
-    $parameters->set(Option::FOLLOW_SYMLINKS, false);
-
     $rectorConfig->rule(NameImportingPostRector::class);
-
-    // If you have an editorconfig and changed files should keep their format enable it here
-    $parameters->set(Option::ENABLE_EDITORCONFIG, true);
 
     // The directory we run in, is the Extension itself and not a project.
     $rectorConfig->paths([
