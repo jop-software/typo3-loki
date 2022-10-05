@@ -2,6 +2,7 @@
 
 namespace Jops\TYPO3\Loki\Log\Writers;
 
+use Jops\TYPO3\Loki\Log\LogRecordFormatter;
 use RuntimeException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
@@ -48,9 +49,9 @@ class LokiWriter extends AbstractWriter
                 [
                     // Those are the labels we can query after
                     "stream" => $this->labels,
-                    // This is "unix epoch in nano seconds" and the log line string
+                    // This is "unix epoch in nanoseconds" and the log line string
                     "values" => [
-                        [ $this->unixEpochNanoSeconds(), json_encode($record->toArray())],
+                        [ $this->unixEpochNanoSeconds(), json_encode(LogRecordFormatter::toArray($record))],
                     ],
                 ],
             ],
