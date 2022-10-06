@@ -11,6 +11,8 @@ class LogRecordFormatter
      * Format the given LogRecord as an array.
      *
      * This uses LogRecord::toArray internally but adds some additional fields.
+     *
+     * @return non-empty-array<string, string>
      */
     public static function toArray(LogRecord $logRecord): array
     {
