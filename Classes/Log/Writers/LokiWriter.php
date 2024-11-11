@@ -83,7 +83,6 @@ class LokiWriter extends AbstractWriter
         } catch (\Throwable $t) {
             // NOOP. Don't throw an exception when loki could not be reached.
         }
-        
 
         return $this;
     }
