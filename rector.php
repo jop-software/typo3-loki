@@ -70,9 +70,9 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->ruleWithConfiguration(ExtEmConfRector::class, [
         ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
     ]);
-    $rectorConfig->ruleWithConfiguration(ExtensionComposerRector::class, [
-        ExtensionComposerRector::TYPO3_VERSION_CONSTRAINT => '',
-    ]);
+    //$rectorConfig->ruleWithConfiguration(ExtensionComposerRector::class, [
+    //    ExtensionComposerRector::TYPO3_VERSION_CONSTRAINT => '',
+    //]);
 
     // Do you want to modernize your TypoScript include statements for files and move from <INCLUDE /> to @import use the FileIncludeToImportStatementVisitor
     $rectorConfig->rule(FileIncludeToImportStatementTypoScriptRector::class);
