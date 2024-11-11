@@ -2,6 +2,7 @@
 
 namespace Jops\TYPO3\Loki\Log\Writers;
 
+use Throwable;
 use Jops\TYPO3\Loki\Log\LogRecordFormatter;
 use RuntimeException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -80,7 +81,7 @@ class LokiWriter extends AbstractWriter
 
         try {
             $this->requestFactory->request("{$baseUrl}/loki/api/v1/push", "POST", $options);
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             // NOOP. Don't throw an exception when loki could not be reached.
         }
 
